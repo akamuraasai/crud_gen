@@ -1,0 +1,14 @@
+{
+    "name": "akamuraasai/crudgen",
+    "description": "CRUD Generator for Laravel 5x\u001b[D.\u001b[x.",
+    "authors": [
+        {
+            "name": "Jonathan Willian",
+            "email": "jonathan.willian.tod@gmail.com"
+        }
+    ],
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {}
+}
