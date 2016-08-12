@@ -1,6 +1,7 @@
 {
     "name": "akamuraasai/crudgen",
-    "description": "CRUD Generator for Laravel 5x\u001b[D.\u001b[x.",
+    "description": "CRUD Generator for Laravel 5.x with GUI interface.",
+    "keywords": ["crud","generator","laravel","php"],
     "authors": [
         {
             "name": "Jonathan Willian",
@@ -10,5 +11,12 @@
     "type": "library",
     "license": "MIT",
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "AkamuraAsai\\CrudGen\\": "src/"
+        }
+    }
 }
