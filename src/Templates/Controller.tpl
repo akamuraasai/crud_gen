@@ -10,17 +10,20 @@ use App\Repositories\##nomePagina##\I##nomePagina##Repository;
 use App\Models\##nomePagina##;
 use Illuminate\Support\Facades\Session;
 
-class ##nomePagina##Controller extends Controller {
+class ##nomePagina##Controller extends Controller
+{
 
     protected $repository;
     protected $nomePdf;
 
-    public function __construct(I##nomePagina##Repository $repository) {
+    public function __construct(I##nomePagina##Repository $repository)
+    {
         $this->repository = $repository;
         $this->nomePdf = '##nomePagina##.pdf';
     }
 
-    public function getIndex() {
+    public function getIndex()
+    {
         $dados = [
             'nomePagina' => 'Cadastro de ##objPlural##',
             'nomePdf' => $this->nomePdf,
@@ -32,24 +35,27 @@ class ##nomePagina##Controller extends Controller {
         return view('sistema.##nomePagina*##', $dados);
     }
 
-    public function lista() {
-
+    public function lista()
+    {
         return $this->repository->lista(Session::get('ramoId'), Session::get('ramo')['ramo']['id']);
     }
 
-    public function deletar(Request $id) {
+    public function deletar(Request $id)
+    {
         $Ids = $id->only('idObj')['idObj'];
         $Arrayid = explode(',', $Ids);
         $this->repository->deletar($Arrayid);
         return array('estado' => 'deletado');
     }
 
-    public function post(##nomePagina##Request $request) {
+    public function post(##nomePagina##Request $request)
+    {
         $this->repository->save(Request::all(), Session::get('ramoId'), Session::get('ramo')['ramo']['id']);
         return array('estado' => 'incluso');
     }
 
-    public function getDados($id) {
+    public function getDados($id)
+    {
         return $this->repository->getDados($id);
     }
 }
