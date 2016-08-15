@@ -16,6 +16,7 @@ class CrudGenController extends Controller
     private $xlsExport = 'true';
     private $tableName = 'inp_teste';
     private $breadParent = 'inprocess';
+    private $error_log;
 
     public function index($timezone)
     {
@@ -29,52 +30,47 @@ class CrudGenController extends Controller
         // se a pasta /crud não existir, cria a pasta também
         // o segundo parametro é o conteudo que vai ser gravado no arquivo
         // se o arquivo já existir, o comando vai sobreescreve-lo.
-        Storage::put('crud/teste.txt', "<?php echo 'uns textos ai';");
+//        Storage::put('crud/teste.txt', "<?php echo 'uns textos ai';");
 
         // pega o conteudo do arquivo teste.txt em /storage/crud/
         // coloca o conteudo dentro de uma variavel
         // depois imprime na tela.
 //         $contents = Storage::get('crud/teste.txt');
 
-        // Pe
-        $contents = File::get(dirname(__DIR__).'/Templates/app.tpl');
-        Storage::put("crud/".$this->pageName."app.php", $this->replaceWildcards($contents));
-
-        $contents = File::get(dirname(__DIR__).'/Templates/breadcrumbs.tpl');
-        Storage::put("crud/".$this->pageName."breadcrumbs.php", $this->replaceWildcards($contents));
-
-        $contents = File::get(dirname(__DIR__).'/Templates/Controller.tpl');
-        Storage::put("crud/".$this->pageName."Controller.php", $this->replaceWildcards($contents));
-
-        $contents = File::get(dirname(__DIR__).'/Templates/gulpfile.tpl');
-        Storage::put("crud/".$this->pageName."gulpfile.js", $this->replaceWildcards($contents));
-
-        $contents = File::get(dirname(__DIR__).'/Templates/InterfaceRepository.tpl');
-        Storage::put("crud/I".$this->pageName."Repository.php", $this->replaceWildcards($contents));
-
-        $contents = File::get(dirname(__DIR__).'/Templates/Model.tpl');
-        Storage::put("crud/".$this->pageName.".php", $this->replaceWildcards($contents));
-
-        $contents = File::get(dirname(__DIR__).'/Templates/Repository.tpl');
-        Storage::put("crud/".$this->pageName."Repository.php", $this->replaceWildcards($contents));
-
-        $contents = File::get(dirname(__DIR__).'/Templates/Request.tpl');
-        Storage::put("crud/".$this->pageName."Request.php", $this->replaceWildcards($contents));
-
-        $contents = File::get(dirname(__DIR__).'/Templates/routes.tpl');
-        Storage::put("crud/".$this->pageName."routes.php", $this->replaceWildcards($contents));
-
-        $contents = File::get(dirname(__DIR__).'/Templates/scripts.tpl');
-        Storage::put("crud/".$this->pageName.".js", $this->replaceWildcards($contents));
-
-        $contents = File::get(dirname(__DIR__).'/Templates/ServiceProvider.tpl');
-        Storage::put("crud/".$this->pageName."ServiceProvider.php", $this->replaceWildcards($contents));
-
-        $contents = File::get(dirname(__DIR__).'/Templates/view.tpl');
-        Storage::put("crud/".$this->pageName.".blade.php", $this->replaceWildcards($contents));
-
 //        echo $contents;
-        echo "foi";
+
+        if ($this->generateCRUD()) echo "foi";
+        else echo "não foi";
+        echo $this->error_log;
+    }
+
+    private function generateCRUD()
+    {
+        return $this->makeController() &&
+        $this->makeInterface() &&
+        $this->makeJavaScript() &&
+        $this->makeModel() &&
+        $this->makeRepository() &&
+        $this->makeRequest() &&
+        $this->makeRoutes() &&
+        $this->makeView() &&
+        $this->changeServiceProvider() &&
+        $this->changeBreadcrumbs() &&
+        $this->changeGulpfile();
+    }
+
+    private function addToLine($file_src, $search_word, $new_text)
+    {
+        $file = file($file_src);
+        for($i = 0; $i < count($file); $i++)
+        {
+            if(strstr($file[$i], $search_word))
+            {
+                $file[$i] = $file[$i] . $new_text;
+                break;
+            }
+        }
+        return implode("", $file);
     }
 
     private function replaceWildcards($file_content)
@@ -91,4 +87,126 @@ class CrudGenController extends Controller
 
         return $aux;
     }
+
+    private function loadAndCreate($file_load, $file_save)
+    {
+        try {
+            $contents = File::get(dirname(__DIR__)."/Templates/$file_load");
+            Storage::put("crud/$file_save", $this->replaceWildcards($contents));
+        } catch (\Exception $e) {
+            $this->error_log .= $e->getMessage() . "\n";
+            return false;
+        }
+        return true;
+    }
+
+    private function loadAndChange($file_load, $file_save, $wildcard)
+    {
+        $output = dirname(dirname(dirname(dirname(__DIR__)))) . "/$file_save";
+        try {
+            $contents = File::get(dirname(__DIR__)."/Templates/$file_load");
+            $fileToChange = $this->addToLine(
+                $output,
+                $wildcard,
+                "\n" . $this->replaceWildcards($contents)
+            );
+            Storage::put("crud/$file_save", $fileToChange);
+        } catch (\Exception $e) {
+            $this->error_log .= $e->getMessage() . "\n";
+            return false;
+        }
+        return true;
+    }
+
+    private function makeModel()
+    {
+        return $this->loadAndCreate(
+            "Model.tpl",
+            "packages/rdias/base/src/Models/$this->pageModule/$this->pageName.php"
+        );
+    }
+
+    private function makeController()
+    {
+        return $this->loadAndCreate(
+            "Controller.tpl",
+            "app/Http/Controllers/Sistema/" . $this->pageName . "Controller.php"
+        );
+    }
+
+    private function makeRequest()
+    {
+        return $this->loadAndCreate(
+            "Request.tpl",
+            "app/Http/Requests/" . $this->pageName . "Request.php"
+        );
+    }
+
+    private function makeRepository()
+    {
+        return $this->loadAndCreate(
+            "Repository.tpl",
+            "packages/rdias/base/src/Repositories/$this->pageModule/" . $this->pageName . "Repository.php"
+        );
+    }
+
+    private function makeInterface()
+    {
+        return $this->loadAndCreate(
+            "InterfaceRepository.tpl",
+            "packages/rdias/base/src/Repositories/$this->pageModule/I" . $this->pageName . "Repository.php"
+        );
+    }
+
+    private function makeView()
+    {
+        return $this->loadAndCreate(
+            "view.tpl",
+            "resources/views/sistema/" . strtolower($this->pageName) . ".blade.php"
+        );
+    }
+
+    private function makeJavaScript()
+    {
+        return $this->loadAndCreate(
+            "scripts.tpl",
+            "resources/assets/js/" . strtolower($this->pageName) . ".js"
+        );
+    }
+
+    private function makeRoutes()
+    {
+        return $this->loadAndCreate(
+            "routes.tpl",
+            "app/Http/Routes/" .strtolower($this->breadParent) . "/" . strtolower($this->pageName) . ".php"
+        );
+    }
+
+    private function changeServiceProvider()
+    {
+        return $this->loadAndChange(
+            "ServiceProvider.tpl",
+            "packages/rdias/base/src/RepositoriosServiceProvider.php",
+            "//fim do arquivo"
+        );
+    }
+
+    private function changeBreadcrumbs()
+    {
+        return $this->loadAndChange(
+            "breadcrumbs.tpl",
+            "app/Http/breadcrumbs.php",
+            "//fim do arquivo"
+        );
+    }
+
+    private function changeGulpfile()
+    {
+        return $this->loadAndChange(
+            "gulpfile.tpl",
+            "gulpfile.js",
+            "//fim do arquivo"
+        );
+    }
+
 }
