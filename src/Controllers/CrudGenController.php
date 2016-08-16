@@ -35,6 +35,7 @@ class CrudGenController extends Controller
         // coloca o conteudo dentro de uma variavel
         // depois imprime na tela.
 //         $contents = Storage::get('crud/teste.txt');
+        // testes e mais testes
 
 //        echo $contents;
 
