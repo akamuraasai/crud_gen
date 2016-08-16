@@ -14,6 +14,9 @@ class CrudGeneratorServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'/views', 'crudgen');
+        $this->publishes([
+            __DIR__.'/public' => public_path('crudgen'),
+        ], 'public');
     }
 
     /**

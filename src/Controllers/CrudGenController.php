@@ -18,10 +18,9 @@ class CrudGenController extends Controller
     private $breadParent = 'inprocess';
     private $error_log;
 
-    public function index($timezone)
+    public function index()
     {
-        $time = Carbon::now($timezone)->toDateTimeString();
-        return view('crudgen::index', compact('time'));
+        return view('crudgen::index');
     }
 
     public function test()
