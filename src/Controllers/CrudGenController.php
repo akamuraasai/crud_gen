@@ -3,6 +3,7 @@ namespace AkamuraAsai\CrudGen\Controllers;
 
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Storage;
 use File;
 
@@ -21,6 +22,12 @@ class CrudGenController extends Controller
     public function index()
     {
         return view('crudgen::index');
+    }
+
+    public function createCrud(Request $request)
+    {
+        dd($request->all());
+//        return "true";
     }
 
     public function test()
