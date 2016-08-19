@@ -40,7 +40,7 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Page Name (UpperCamelCase)</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted browser icon"></i>
                             <input type="text" name="pageName" placeholder="Eg.: SamplePage">
                             <div class="ui corner label">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="field">
                         <label>Module Name (UpperCamelCase)</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted sitemap icon"></i>
                             <input type="text" name="moduleName" placeholder="Eg.: InProcess">
                             <div class="ui corner label">
@@ -63,7 +63,7 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Object on Singular (Letter Case)</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted hand pointer icon"></i>
                             <input type="text" name="objSingular" placeholder="Eg.: Sample Page">
                             <div class="ui corner label">
@@ -73,7 +73,7 @@
                     </div>
                     <div class="field">
                         <label>Object on Plural (Letter Case)</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted hand peace icon"></i>
                             <input type="text" name="objPlural" placeholder="Eg.: Sample Pages">
                             <div class="ui corner label">
@@ -86,7 +86,7 @@
                 <div class="two fields">
                     <div class="field">
                         <label>The nomenclature of name field on model (lowercase)</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted info icon"></i>
                             <input type="text" name="nameField" placeholder="Eg.: name">
                             <div class="ui corner label">
@@ -96,7 +96,7 @@
                     </div>
                     <div class="field">
                         <label>Table Name (lower_case)</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted database icon"></i>
                             <input type="text" name="tableName" placeholder="Eg.: inp_sample_pages">
                             <div class="ui corner label">
@@ -109,7 +109,7 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Breadcrumbs Parent Name (lowercase)</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted fork icon"></i>
                             <input type="text" name="breadParent" placeholder="Eg.: inprocess">
                             <div class="ui corner label">
@@ -129,21 +129,21 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Model</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted folder icon"></i>
                             <input type="text" name="modelPath" placeholder="Eg.: app/Models/">
-                            <div class="ui corner label">
-                                <i class="asterisk icon"></i>
+                            <div class="ui label">
+                                <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
                         </div>
                     </div>
                     <div class="field">
                         <label>Controller</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted folder icon"></i>
                             <input type="text" name="controllerPath" placeholder="Eg.: app/Http/Controllers/">
-                            <div class="ui corner label">
-                                <i class="asterisk icon"></i>
+                            <div class="ui label">
+                                <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
                         </div>
                     </div>
@@ -152,21 +152,21 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Request</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted hand folder icon"></i>
                             <input type="text" name="requestPath" placeholder="Eg.: app/Requests/">
-                            <div class="ui corner label">
-                                <i class="asterisk icon"></i>
+                            <div class="ui label">
+                                <input type="checkbox" class="ui checkbox" name="exportXLS">
                             </div>
                         </div>
                     </div>
                     <div class="field">
                         <label>View</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted hand folder icon"></i>
                             <input type="text" name="viewPath" placeholder="Eg.: resource/views/">
-                            <div class="ui corner label">
-                                <i class="asterisk icon"></i>
+                            <div class="ui label">
+                                <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
                         </div>
                     </div>
@@ -175,21 +175,21 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Repository</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted folder icon"></i>
                             <input type="text" name="repositoryPath" placeholder="Eg.: app/Repositories/">
-                            <div class="ui corner label">
-                                <i class="asterisk icon"></i>
+                            <div class="ui label">
+                                <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
                         </div>
                     </div>
                     <div class="field">
                         <label>Interface</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted folder icon"></i>
                             <input type="text" name="interfacePath" placeholder="Eg.: app/Repositories/">
-                            <div class="ui corner label">
-                                <i class="asterisk icon"></i>
+                            <div class="ui label">
+                                <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
                         </div>
                     </div>
@@ -198,21 +198,21 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Javascript Asset</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted folder icon"></i>
                             <input type="text" name="jsPath" placeholder="Eg.: resources/assets/js/">
-                            <div class="ui corner label">
-                                <i class="asterisk icon"></i>
+                            <div class="ui label">
+                                <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
                         </div>
                     </div>
                     <div class="field">
                         <label>Routes</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted folder icon"></i>
                             <input type="text" name="routesPath" placeholder="Eg.: app/Http/Routes/">
-                            <div class="ui corner label">
-                                <i class="asterisk icon"></i>
+                            <div class="ui label">
+                                <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
                         </div>
                     </div>
@@ -221,21 +221,21 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Service Provider File</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted file icon"></i>
                             <input type="text" name="providerPath" placeholder="Eg.: app/Providers/AppServiceProvider.php">
-                            <div class="ui corner label">
-                                <i class="asterisk icon"></i>
+                            <div class="ui label">
+                                <input type="checkbox" class="ui checkbox" name="exportXLS">
                             </div>
                         </div>
                     </div>
                     <div class="field">
                         <label>Breadcrumbs File</label>
-                        <div class="ui fluid corner labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
                             <i class="circular inverted file icon"></i>
                             <input type="text" name="breadcrumbsPath" placeholder="Eg.: app/Http/breadcrumbs.php">
-                            <div class="ui corner label">
-                                <i class="asterisk icon"></i>
+                            <div class="ui label">
+                                <input type="checkbox" class="ui checkbox" name="exportXLS">
                             </div>
                         </div>
                     </div>
