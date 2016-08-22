@@ -40,7 +40,7 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Page Name (UpperCamelCase)</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted browser icon"></i>
                             <input type="text" name="pageName" placeholder="Eg.: SamplePage">
                             <div class="ui corner label">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="field">
                         <label>Module Name (UpperCamelCase)</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted sitemap icon"></i>
                             <input type="text" name="moduleName" placeholder="Eg.: InProcess">
                             <div class="ui corner label">
@@ -63,7 +63,7 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Object on Singular (Letter Case)</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted hand pointer icon"></i>
                             <input type="text" name="objSingular" placeholder="Eg.: Sample Page">
                             <div class="ui corner label">
@@ -73,7 +73,7 @@
                     </div>
                     <div class="field">
                         <label>Object on Plural (Letter Case)</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted hand peace icon"></i>
                             <input type="text" name="objPlural" placeholder="Eg.: Sample Pages">
                             <div class="ui corner label">
@@ -86,9 +86,9 @@
                 <div class="two fields">
                     <div class="field">
                         <label>The nomenclature of name field on model (lowercase)</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted info icon"></i>
-                            <input type="text" name="nameField" placeholder="Eg.: name">
+                            <input type="text" name="nameField" placeholder="Eg.: name" value="nome">
                             <div class="ui corner label">
                                 <i class="asterisk icon"></i>
                             </div>
@@ -96,7 +96,7 @@
                     </div>
                     <div class="field">
                         <label>Table Name (lower_case)</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted database icon"></i>
                             <input type="text" name="tableName" placeholder="Eg.: inp_sample_pages">
                             <div class="ui corner label">
@@ -109,9 +109,9 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Breadcrumbs Parent Name (lowercase)</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted fork icon"></i>
-                            <input type="text" name="breadParent" placeholder="Eg.: inprocess">
+                            <input type="text" name="breadParent" placeholder="Eg.: inprocess" value="inicio">
                             <div class="ui corner label">
                                 <i class="asterisk icon"></i>
                             </div>
@@ -119,8 +119,8 @@
                     </div>
                     <div class="field">
                         <label>Can Export XLS File?</label>
-                        <div class="ui toggle checkbox" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required style="margin-top: 0.5em;">
-                            <input type="checkbox" name="exportXLS">
+                        <div class="ui toggle checkbox" required style="margin-top: 0.5em;">
+                            <input type="checkbox" name="exportXLS" checked>
                             <label>Can this page export a XLS of itens list?</label>
                         </div>
                     </div>
@@ -129,9 +129,9 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Model</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted folder icon"></i>
-                            <input type="text" name="modelPath" placeholder="Eg.: app/Models/">
+                            <input type="text" name="modelPath" placeholder="Eg.: app/Models/" value="packages/rdias/base/src/Models/">
                             <div class="ui label">
                                 <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
@@ -139,9 +139,9 @@
                     </div>
                     <div class="field">
                         <label>Controller</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted folder icon"></i>
-                            <input type="text" name="controllerPath" placeholder="Eg.: app/Http/Controllers/">
+                            <input type="text" name="controllerPath" placeholder="Eg.: app/Http/Controllers/" value="app/Http/Controllers/Sistema/">
                             <div class="ui label">
                                 <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
@@ -152,9 +152,9 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Request</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted hand folder icon"></i>
-                            <input type="text" name="requestPath" placeholder="Eg.: app/Requests/">
+                            <input type="text" name="requestPath" placeholder="Eg.: app/Http/Requests/" value="app/Http/Requests/">
                             <div class="ui label">
                                 <input type="checkbox" class="ui checkbox" name="exportXLS">
                             </div>
@@ -162,9 +162,9 @@
                     </div>
                     <div class="field">
                         <label>View</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted hand folder icon"></i>
-                            <input type="text" name="viewPath" placeholder="Eg.: resource/views/">
+                            <input type="text" name="viewPath" placeholder="Eg.: resources/views/" value="resources/views/sistema/">
                             <div class="ui label">
                                 <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
@@ -175,9 +175,9 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Repository</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted folder icon"></i>
-                            <input type="text" name="repositoryPath" placeholder="Eg.: app/Repositories/">
+                            <input type="text" name="repositoryPath" placeholder="Eg.: app/Repositories/" value="packages/rdias/base/src/Repositories/">
                             <div class="ui label">
                                 <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
@@ -185,9 +185,9 @@
                     </div>
                     <div class="field">
                         <label>Interface</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted folder icon"></i>
-                            <input type="text" name="interfacePath" placeholder="Eg.: app/Repositories/">
+                            <input type="text" name="interfacePath" placeholder="Eg.: app/Repositories/" value="packages/rdias/base/src/Repositories/">
                             <div class="ui label">
                                 <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
@@ -198,9 +198,9 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Javascript Asset</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted folder icon"></i>
-                            <input type="text" name="jsPath" placeholder="Eg.: resources/assets/js/">
+                            <input type="text" name="jsPath" placeholder="Eg.: resources/assets/js/" value="resources/assets/js/">
                             <div class="ui label">
                                 <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
@@ -208,9 +208,9 @@
                     </div>
                     <div class="field">
                         <label>Routes</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted folder icon"></i>
-                            <input type="text" name="routesPath" placeholder="Eg.: app/Http/Routes/">
+                            <input type="text" name="routesPath" placeholder="Eg.: app/Http/Routes/" value="app/Http/Routes/">
                             <div class="ui label">
                                 <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
@@ -221,9 +221,9 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Service Provider File</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted file icon"></i>
-                            <input type="text" name="providerPath" placeholder="Eg.: app/Providers/AppServiceProvider.php">
+                            <input type="text" name="providerPath" placeholder="Eg.: app/Providers/AppServiceProvider.php" value="packages/rdias/base/src/RepositoriosServiceProvider.php">
                             <div class="ui label">
                                 <input type="checkbox" class="ui checkbox" name="exportXLS">
                             </div>
@@ -231,9 +231,9 @@
                     </div>
                     <div class="field">
                         <label>Breadcrumbs File</label>
-                        <div class="ui fluid right labeled left icon input" data-content="Você precisa escolher em qual cidade você está, para poder continuar." data-variation="wide inverted" required>
+                        <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted file icon"></i>
-                            <input type="text" name="breadcrumbsPath" placeholder="Eg.: app/Http/breadcrumbs.php">
+                            <input type="text" name="breadcrumbsPath" placeholder="Eg.: app/Http/breadcrumbs.php" value="app/Http/breadcrumbs.php">
                             <div class="ui label">
                                 <input type="checkbox" class="ui checkbox" name="exportXLS">
                             </div>
@@ -292,7 +292,7 @@
                                                 prompt : 'Por favor, digite sua senha.'
                                             },
                                             {
-                                                type   : 'length[6]',
+                                                type   : 'length[4]',
                                                 prompt : 'Sua senha deve conter no minimo 6 caracteres.'
                                             }
                                         ]
@@ -305,7 +305,7 @@
                                                 prompt : 'Por favor, digite sua senha.'
                                             },
                                             {
-                                                type   : 'length[6]',
+                                                type   : 'length[4]',
                                                 prompt : 'Sua senha deve conter no minimo 6 caracteres.'
                                             }
                                         ]
@@ -318,7 +318,7 @@
                                                 prompt : 'Por favor, digite sua senha.'
                                             },
                                             {
-                                                type   : 'length[6]',
+                                                type   : 'length[4]',
                                                 prompt : 'Sua senha deve conter no minimo 6 caracteres.'
                                             }
                                         ]
@@ -331,7 +331,7 @@
                                                 prompt : 'Por favor, digite sua senha.'
                                             },
                                             {
-                                                type   : 'length[6]',
+                                                type   : 'length[4]',
                                                 prompt : 'Sua senha deve conter no minimo 6 caracteres.'
                                             }
                                         ]
@@ -357,7 +357,7 @@
                                                 prompt : 'Por favor, digite sua senha.'
                                             },
                                             {
-                                                type   : 'length[6]',
+                                                type   : 'length[4]',
                                                 prompt : 'Sua senha deve conter no minimo 6 caracteres.'
                                             }
                                         ]

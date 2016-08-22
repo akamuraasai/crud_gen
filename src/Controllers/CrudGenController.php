@@ -14,9 +14,21 @@ class CrudGenController extends Controller
     private $objSingular = 'Teste';
     private $objPlural = 'Testes';
     private $nameField = 'nome';
-    private $xlsExport = 'true';
     private $tableName = 'inp_teste';
     private $breadParent = 'inprocess';
+    private $xlsExport = 'true';
+
+    private $modelPath;
+    private $controllerPath;
+    private $requestPath;
+    private $viewPath;
+    private $repositoryPath;
+    private $interfacePath;
+    private $jsPath;
+    private $routesPath;
+    private $providerPath;
+    private $breadcrumbsPath;
+
     private $error_log;
 
     public function index()
@@ -26,8 +38,30 @@ class CrudGenController extends Controller
 
     public function createCrud(Request $request)
     {
-        dd($request->all());
+//        dd($request->all());
+        $this->pageName = $request->input('pageName');
+        $this->pageModule = $request->input('moduleName');
+        $this->objSingular = $request->input('objSingular');
+        $this->objPlural = $request->input('objPlural');
+        $this->nameField = $request->input('nameField');
+        $this->tableName = $request->input('tableName');
+        $this->breadParent = $request->input('breadParent');
+        $this->xlsExport = ($request->input('exportXLS') == 'on' ? "true" : "false");
+
+        $this->modelPath = $request->input('modelPath');
+        $this->controllerPath = $request->input('controllerPath');
+        $this->requestPath = $request->input('requestPath');
+        $this->viewPath = $request->input('viewPath');
+        $this->repositoryPath = $request->input('repositoryPath');
+        $this->interfacePath = $request->input('interfacePath');
+        $this->jsPath = $request->input('jsPath');
+        $this->routesPath = $request->input('routesPath');
+        $this->providerPath = $request->input('providerPath');
+        $this->breadcrumbsPath = $request->input('breadcrumbsPath');
 //        return "true";
+        if ($this->generateCRUD()) echo "foi";
+        else echo "não foi";
+        echo $this->error_log;
     }
 
     public function test()
@@ -87,7 +121,7 @@ class CrudGenController extends Controller
         $aux = str_replace("##moduloPagina*##", strtolower($this->pageModule), str_replace("##moduloPagina##", $this->pageModule, $aux));
         $aux = str_replace("##objSingular*##", strtolower($this->objSingular), str_replace("##objSingular##", $this->objSingular, $aux));
         $aux = str_replace("##objPlural*##", strtolower($this->objPlural), str_replace("##objPlural##", $this->objPlural, $aux));
-        $aux = str_replace("##campoNome", $this->nameField, $aux);
+        $aux = str_replace("##campoNome##", $this->nameField, $aux);
         $aux = str_replace("##exportaXLS##", $this->xlsExport, $aux);
         $aux = str_replace("##nomeTabela##", $this->tableName, $aux);
         $aux = str_replace("##paiBread##", $this->breadParent, $aux);
@@ -129,7 +163,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndCreate(
             "Model.tpl",
-            "packages/rdias/base/src/Models/$this->pageModule/$this->pageName.php"
+            $this->modelPath."$this->pageModule/$this->pageName.php"
         );
     }
 
@@ -137,7 +171,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndCreate(
             "Controller.tpl",
-            "app/Http/Controllers/Sistema/" . $this->pageName . "Controller.php"
+            $this->controllerPath . $this->pageName . "Controller.php"
         );
     }
 
@@ -145,7 +179,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndCreate(
             "Request.tpl",
-            "app/Http/Requests/" . $this->pageName . "Request.php"
+            $this->requestPath . $this->pageName . "Request.php"
         );
     }
 
@@ -153,7 +187,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndCreate(
             "Repository.tpl",
-            "packages/rdias/base/src/Repositories/$this->pageModule/" . $this->pageName . "Repository.php"
+            $this->repositoryPath."$this->pageModule/" . $this->pageName . "Repository.php"
         );
     }
 
@@ -161,7 +195,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndCreate(
             "InterfaceRepository.tpl",
-            "packages/rdias/base/src/Repositories/$this->pageModule/I" . $this->pageName . "Repository.php"
+            $this->repositoryPath."$this->pageModule/I" . $this->pageName . "Repository.php"
         );
     }
 
@@ -169,7 +203,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndCreate(
             "view.tpl",
-            "resources/views/sistema/" . strtolower($this->pageName) . ".blade.php"
+            $this->viewPath . strtolower($this->pageName) . ".blade.php"
         );
     }
 
@@ -177,7 +211,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndCreate(
             "scripts.tpl",
-            "resources/assets/js/" . strtolower($this->pageName) . ".js"
+            $this->jsPath . strtolower($this->pageName) . ".js"
         );
     }
 
@@ -185,7 +219,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndCreate(
             "routes.tpl",
-            "app/Http/Routes/" .strtolower($this->breadParent) . "/" . strtolower($this->pageName) . ".php"
+            $this->routesPath . strtolower($this->breadParent) . "/" . strtolower($this->pageName) . ".php"
         );
     }
 
@@ -193,7 +227,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndChange(
             "ServiceProvider.tpl",
-            "packages/rdias/base/src/RepositoriosServiceProvider.php",
+            $this->providerPath,
             "//fim do arquivo"
         );
     }
@@ -202,7 +236,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndChange(
             "breadcrumbs.tpl",
-            "app/Http/breadcrumbs.php",
+            $this->breadcrumbsPath,
             "//fim do arquivo"
         );
     }
