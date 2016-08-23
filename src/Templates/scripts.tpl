@@ -1,8 +1,4 @@
 (function(){
-    // $(".openpanel").on("click", function() {
-    //     $("#infos").collapse('show');
-    // });
-
     $("#bt-exportar").click(function(event) {
         $('#apptabela').tableExport({
             type:'excel',
@@ -11,7 +7,7 @@
         });
     });
 
-    $("#cktodos, #bt-exportar, #bt-novo").tooltip();
+    $('[data-toggle=tooltip]').bstooltip();
 
     $('#md-##nomePagina*##').on('shown.bs.modal', function (e) {
         var chamada   = ($(e.relatedTarget).attr('data-botao'));
@@ -60,7 +56,6 @@
         var modal = $(this)
         modal.find('.msg-modal').html('<i class="fa fa-refresh fa-spin"></i> Carregando...');
     });
-
 
     $('.alertas-sistema').removeClass('hide');
 })();
@@ -142,8 +137,6 @@ function fn##nomePagina##Controller($scope, $http) {
                     }
                     $scope.limpa_form();
                     jQuery('form').validator('validate');
-                    $("#tabela").collapse('show');
-                    $("#infos").collapse('hide');
                     $("html, body").animate({ scrollTop: 0 }, 600);
                 }
             },
@@ -198,10 +191,16 @@ function fn##nomePagina##Controller($scope, $http) {
     $scope.editar = function(campo){
 
         $scope.msgAcao='Editar ##objSingular##';
-        $scope.##nomePagina*##=campo;
 
-        $("#infos").collapse('show');
-        $('###campoNome##').focus();
+
+        $http.get('/cadastro/##nomePagina*##/data/'+campo).success(function(data){
+            $scope.##nomePagina*##=data;
+
+            $("#infos").collapse('show');
+            $('###campoNome##').focus();
+        }).error(function(erro){
+            console.error(erro);
+        });
     };
     /******************************FIM POPULA FORM PARA EDIÇÃO******************************/
 

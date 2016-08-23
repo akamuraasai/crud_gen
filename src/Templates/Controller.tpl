@@ -6,13 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\##nomePagina##Request;
-use App\Repositories\##nomePagina##\I##nomePagina##Repository;
-use App\Models\##nomePagina##;
-use Illuminate\Support\Facades\Session;
+use Rdias\Base\Repositories\##moduloPagina##\I##nomePagina##Repository;
+use Rdias\Base\Models\##moduloPagina##\##nomePagina##;
 
 class ##nomePagina##Controller extends Controller
 {
-
     protected $repository;
     protected $nomePdf;
 
@@ -37,7 +35,7 @@ class ##nomePagina##Controller extends Controller
 
     public function lista()
     {
-        return $this->repository->lista(Session::get('ramoId'), Session::get('ramo')['ramo']['id']);
+        return $this->repository->lista();
     }
 
     public function deletar(Request $id)
@@ -50,8 +48,17 @@ class ##nomePagina##Controller extends Controller
 
     public function post(##nomePagina##Request $request)
     {
-        $this->repository->save(Request::all(), Session::get('ramoId'), Session::get('ramo')['ramo']['id']);
-        return array('estado' => 'incluso');
+        if ($request->id == "") {
+            $obj = New ##nomePagina##;
+            $obj->exchangeArray($request->all());
+            $this->repository->save($obj);
+            return array('estado' => 'inlcuso');
+        } else {
+            $obj = $this->repository->findArray($request->id);
+            $obj->exchangeArray($request->all());
+            $this->repository->save($obj);
+            return array('estado' => 'editado');
+        }
     }
 
     public function getDados($id)

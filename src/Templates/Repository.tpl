@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Repositories\##nomePagina##;
+namespace Rdias\Base\Repositories\##moduloPagina##;
 
-use App\Repositories\##nomePagina##\I##nomePagina##Repository;
-use App\Repositories\Base\BaseRepository;
+use Rdias\Base\Repositories\##moduloPagina##\I##nomePagina##Repository;
+use Rdias\Base\Repositories\Base\BaseRepository;
 use EntityManager;
-use App\Models\##nomePagina##;
 use Doctrine\ORM\Query;
 use DB;
 use Defender;
@@ -19,7 +18,7 @@ class ##nomePagina##Repository extends BaseRepository implements I##nomePagina##
         parent::__construct($em);
         $this->em = $em;
         $this->serializer = \JMS\Serializer\SerializerBuilder::create()->build();
-        $this->model = 'App\Models\##nomePagina##';
+        $this->model = 'Rdias\Base\Models\##moduloPagina##\##nomePagina##';
     }
 
     public function deletar(Array $id) {
@@ -32,30 +31,16 @@ class ##nomePagina##Repository extends BaseRepository implements I##nomePagina##
         return true;
     }
 
-    public function save(array $modelo, $nivelId, $ramoId) {
-      if ($modelo['id']== ""){
-        $##nomePagina*## = new ##nomePagina##;
-        $##nomePagina*##->addNivel($this->em->find('App\Models\Nivel', $nivelId));
-        $##nomePagina*##->exchangeArray($modelo);
-      }else{
-        $##nomePagina*## = EntityManager::find($this->model, $modelo['id']);
-        $##nomePagina*##->exchangeArray($modelo);
-      }
-
-      EntityManager::persist($##nomePagina*##);
-      EntityManager::flush();
-
-      return true;
+    public function save(##nomePagina## $obj) {
+        EntityManager::persist($obj);
+        EntityManager::flush();
     }
 
-    public function lista($nivelId, $ramoId)
+    public function lista()
     {
         return $this->em->createQueryBuilder()
                 ->select('i')
                 ->from($this->model, 'i')
-                ->leftJoin('i.niveis', 'b')
-                ->where('b.id = :nivelId')
-                ->setParameter(':nivelId', $nivelId)
                 ->getQuery()
                 ->getArrayResult();
     }

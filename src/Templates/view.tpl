@@ -1,10 +1,11 @@
 @extends('layouts.form-geral', [
           'nome' => '##nomePagina*##',
           'nome_plural' => '##objPlural##',
-          'nome_real' => '##nomePagina##',
+          'nome_real' => '##objSingular##',
           'campo_nome' => '##campoNome##',
           'exporta_excel' => ##exportaXLS##,
-          'item' => '##nomePagina*##',
+          'item' => '##itemPermissaoPagina##',
+          'tooltip' => true
 ])
 
 
@@ -16,9 +17,9 @@
 <th class="text-center col-xs-11">
     Descrição
 </th>
-@can("##nomePagina*##.editar")
-<th class="text-center col-xs-5">Ação</th>
-@endcan
+@if( Gate::check('##itemPermissaoPagina##.editar') )
+    <th class="text-center col-xs-5">Ação</th>
+@endif
 @stop
 
 
@@ -26,11 +27,29 @@
 @section('body_tabela')
 <td>@{{lista.##campoNome##}}</td>
 <td>@{{lista.descricao}}</td>
-@can("##nomePagina*##.editar")
-<td class="text-center">
-    <button type="button" class="btn btn-warning btnNome btnEditar openpanel" ng-click="editar(lista)" data-id="@{{lista.id}}"><i class="fa fa-pencil"></i> Editar</button>
-</td>
-@endcan
+@if( Gate::check('##itemPermissaoPagina##.editar') )
+    <td class="text-center alinha-vertical">
+        <div class="btn-group">
+            <button type="button"
+                    class="btn btn-warning dropdown-toggle"
+                    data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                <span data-toggle="tooltip" data-placement="left">
+                     <i class="fa fa-bars" aria-hidden="true"></i> Opções <span class="caret"></span>
+                </span>
+            </button>
+             <ul class="dropdown-menu">
+                <li>
+                    <a  href="#"
+                        ng-click="editar(lista)"
+                        data-id="@{{lista.id}}">
+                        <i class="fa fa-pencil"></i> Editar
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </td>
+@endif
 @stop
 
 

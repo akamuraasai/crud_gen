@@ -1,7 +1,7 @@
-<?php 
+<?php
+namespace Rdias\Base\Repositories\##moduloPagina##;
 
-namespace App\Repositories\##nomePagina##;
-use App\Repositories\Base\IBaseRepository;
+use Rdias\Base\Repositories\Base\IBaseRepository;
 
 interface I##nomePagina##Repository extends IBaseRepository{
 
