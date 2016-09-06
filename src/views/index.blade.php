@@ -292,7 +292,7 @@
                                                 prompt : 'Por favor, digite sua senha.'
                                             },
                                             {
-                                                type   : 'length[4]',
+                                                type   : 'length[3]',
                                                 prompt : 'Sua senha deve conter no minimo 6 caracteres.'
                                             }
                                         ]

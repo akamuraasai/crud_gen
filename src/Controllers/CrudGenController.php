@@ -100,6 +100,7 @@ class CrudGenController extends Controller
         $this->changeGulpfile();
     }
 
+
     private function addToLine($file_src, $search_word, $new_text)
     {
         $file = file($file_src);
