@@ -6,10 +6,10 @@ Route::group(['prefix' => '##moduloPagina*##', 'middleware' => ['auth','SuiteSes
      *--------------------------------------------------------------------------
      */
     Route::group(['prefix' => '##nomePagina*##', 'middleware' => ['auth','Perfil:##itemPermissaoPagina##.menu']], function () {
-        Route::get('/', 'Sistema\##nomePagina##Controller@getIndex')->name('##nomePagina*##');
-        Route::post('/', 'Sistema\##nomePagina##Controller@post');
-        Route::get('/lista', 'Sistema\##nomePagina##Controller@lista');
-        Route::get('/data/{id}', 'Sistema\##nomePagina##Controller@getDados');
-        Route::delete('/deletar', 'Sistema\##nomePagina##Controller@deletar');
+        Route::get('/', '##moduloPagina##\##nomePagina##Controller@getIndex')->name('##nomePagina*##');
+        Route::post('/', '##moduloPagina##\##nomePagina##Controller@post');
+        Route::get('/lista', '##moduloPagina##\##nomePagina##Controller@lista');
+        Route::get('/data/{id}', '##moduloPagina##\##nomePagina##Controller@getDados');
+        Route::delete('/deletar', '##moduloPagina##\##nomePagina##Controller@deletar');
     });
 });

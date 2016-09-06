@@ -144,7 +144,7 @@ class CrudGenController extends Controller
 
     private function loadAndChange($file_load, $file_save, $wildcard)
     {
-        $output = dirname(dirname(dirname(dirname(__DIR__)))) . "/$file_save";
+        $output = dirname(dirname(dirname(dirname(dirname(__DIR__))))) . "/$file_save";
         try {
             $contents = File::get(dirname(__DIR__)."/Templates/$file_load");
             $fileToChange = $this->addToLine(
@@ -172,7 +172,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndCreate(
             "Controller.tpl",
-            $this->controllerPath . $this->pageName . "Controller.php"
+            $this->controllerPath . "$this->pageModule/" . $this->pageName . "Controller.php"
         );
     }
 
@@ -204,7 +204,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndCreate(
             "view.tpl",
-            $this->viewPath . strtolower($this->pageName) . ".blade.php"
+            $this->viewPath . strtolower($this->pageModule) . "/" . strtolower($this->pageName) . ".blade.php"
         );
     }
 
@@ -212,7 +212,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndCreate(
             "scripts.tpl",
-            $this->jsPath . strtolower($this->pageName) . ".js"
+            $this->jsPath . strtolower($this->pageModule) . "/" . strtolower($this->pageName) . ".js"
         );
     }
 
@@ -220,7 +220,7 @@ class CrudGenController extends Controller
     {
         return $this->loadAndCreate(
             "routes.tpl",
-            $this->routesPath . strtolower($this->breadParent) . "/" . strtolower($this->pageName) . ".php"
+            $this->routesPath . strtolower($this->pageModule) . "/" . strtolower($this->pageName) . ".php"
         );
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Sistema;
+namespace App\Http\Controllers\##moduloPagina##;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -30,7 +30,7 @@ class ##nomePagina##Controller extends Controller
             'administrador' => \Auth::user()->getAdministrador()
         ];
 
-        return view('sistema.##nomePagina*##', $dados);
+        return view('##moduloPagina*##.##nomePagina*##', $dados);
     }
 
     public function lista()

@@ -141,7 +141,7 @@
                         <label>Controller</label>
                         <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted folder icon"></i>
-                            <input type="text" name="controllerPath" placeholder="Eg.: app/Http/Controllers/" value="app/Http/Controllers/Sistema/">
+                            <input type="text" name="controllerPath" placeholder="Eg.: app/Http/Controllers/" value="app/Http/Controllers/">
                             <div class="ui label">
                                 <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
@@ -164,7 +164,7 @@
                         <label>View</label>
                         <div class="ui fluid right labeled left icon input" required>
                             <i class="circular inverted hand folder icon"></i>
-                            <input type="text" name="viewPath" placeholder="Eg.: resources/views/" value="resources/views/sistema/">
+                            <input type="text" name="viewPath" placeholder="Eg.: resources/views/" value="resources/views/">
                             <div class="ui label">
                                 <input type="checkbox" class="ui checkbox" name="exportXLS" checked>
                             </div>
